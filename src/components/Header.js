@@ -1,11 +1,10 @@
-// prop types
 import PropTypes from 'prop-types'
 
-
+// CSS in JS requires double {{}}, and uses camelCase instead-of-dashes
 const Header = ({ title }) => {
     return (
         <header>
-            <h1>{title}</h1>
+            <h1 style={{color: 'red', backgroundColor: 'black'}}>{title}</h1>
             
         </header>
     )
@@ -16,9 +15,8 @@ Header.defaultProps = {
     title: 'defaultProp defined below the arrow function is weird though'
 }
 
-// I can still pass a number in {}, and the propTypes will convert it to a string. The console will show a warning though. Seems unnecessarily complicated. Can TypeScript handle easier prop type definitions?
 Header.propTypes = {
-    title: PropTypes.string
+    title: PropTypes.string.isRequired,
 }
 
 export default Header
