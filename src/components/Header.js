@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types'
 
-// CSS in JS requires double {{}}, and uses camelCase instead-of-dashes
+// OR can create a const below to store the styles, and pass them in with {}. This seems cleaner
 const Header = ({ title }) => {
     return (
         <header>
-            <h1 style={{color: 'red', backgroundColor: 'black'}}>{title}</h1>
+            <h1 style={headingStyle}>{title}</h1>
             
         </header>
     )
@@ -17,6 +17,11 @@ Header.defaultProps = {
 
 Header.propTypes = {
     title: PropTypes.string.isRequired,
+}
+
+const headingStyle = {
+    color: 'red', 
+    backgroundColor: 'black'
 }
 
 export default Header
