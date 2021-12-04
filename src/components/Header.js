@@ -1,12 +1,15 @@
-
-// WOW this is elegant. instead of writing each individual parameter name into the arrow function declaration, I can simply pass props, and then refer to props.whatever I name it where I need it!
 const Header = (props) => {
     return (
         <header>
             <h1>{props.title}</h1>
-            <h2>{props.name}</h2>
+            
         </header>
     )
+}
+
+// hmm, but defining defaultProps outside of the arrow function is less elegant. If I have to write them anyway, why not write them in the function declaration.
+Header.defaultProps = {
+    title: 'defaultProp defined below the arrow function is weird though'
 }
 
 export default Header

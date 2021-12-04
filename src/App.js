@@ -4,7 +4,7 @@ function App() {
   return (
     <div className='container'>
       <Header title='Hello'/>
-      <Header name='Moog'/>
+      <Header />
     </div>
   )
 }
