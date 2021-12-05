@@ -1,22 +1,24 @@
-import PropTypes from 'prop-types'
+import Button from './Button'
 
-// OR can create a const below to store the styles, and pass them in with {}. This seems cleaner
-const Header = ({ title }) => {
+// oh destructuring props is just more efficient? (rather than passing a bloated prop object)
+
+// this is much better resource https://beta.reactjs.org/learn/passing-props-to-a-component
+// the DefaultProps and PropType thing seems unnecessary based on react docs. 
+// Their style is much more readable to me
+// OHH okay, and TypeScript inherently replaces react PropTypes. PropTypes are availabel for JS files. Nice feature, but I'd rather use TS.
+
+const Header = ({ title = 'defaultTitle' }) => {
+    
+    const onClick = () => {
+        console.log('Click')
+    }
+
     return (
-        <header>
-            <h1 style={headingStyle}>{title}</h1>
-            
+        <header className='header'>
+            <h1 src={headingStyle}>{title}</h1>
+            <Button color='green' text='Add' onClick={onClick}/>
         </header>
     )
-}
-
-
-Header.defaultProps = {
-    title: 'defaultProp defined below the arrow function is weird though'
-}
-
-Header.propTypes = {
-    title: PropTypes.string.isRequired,
 }
 
 const headingStyle = {
@@ -25,3 +27,5 @@ const headingStyle = {
 }
 
 export default Header
+
+
