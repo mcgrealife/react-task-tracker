@@ -1,4 +1,5 @@
 import { useState } from "react"
+import React from 'react'
 
 const AddTask = ( {onAdd} ) => {
     const [text, setText] = useState('')
@@ -20,7 +21,7 @@ const AddTask = ( {onAdd} ) => {
         setReminder(false)
     }
 
-    return (
+    return ( <>
         <form className='add-form' onSubmit={onSubmit}>
             <div className='form-control'>
                 <label>Task</label>
@@ -43,6 +44,7 @@ const AddTask = ( {onAdd} ) => {
             </div>
             <input type='submit' value='save task' className='btn btn-block'/>
         </form>
+        </>
     )
 }
 
