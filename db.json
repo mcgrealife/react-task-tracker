@@ -1,12 +1,6 @@
 {
   "tasks": [
     {
-      "id": 1,
-      "text": "meeting at school",
-      "day": "feb 6th at 1: 30pm",
-      "reminder": true
-    },
-    {
       "id": 2,
       "text": "another task",
       "day": "feb 7th at 2: 30pm",
@@ -17,6 +11,42 @@
       "text": "order food",
       "day": "feb 6th at 5: 30pm",
       "reminder": false
+    },
+    {
+      "id": 5
+    },
+    {
+      "id": 6
+    },
+    {
+      "text": "tasksss",
+      "day": "sometime",
+      "reminder": false,
+      "id": 7
+    },
+    {
+      "text": "it worked!",
+      "day": "just by referencing moz docs!",
+      "reminder": false,
+      "id": 8
+    },
+    {
+      "text": "it weirdly requires a refresh",
+      "day": "and throws a key error. but it works!",
+      "reminder": false,
+      "id": 9
+    },
+    {
+      "text": "adding new task ",
+      "day": "with await!",
+      "reminder": false,
+      "id": 10
+    },
+    {
+      "text": "that solved the UI updating error",
+      "day": "because the UI was updating before the repsonse",
+      "reminder": false,
+      "id": 11
     }
   ]
 }

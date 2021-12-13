@@ -1,44 +1,70 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from './components/Header'
 import Tasks from './components/Tasks'
 import AddTask from './components/AddTask'
-import {v4 as uuidv4} from 'uuid'
 import React from 'react'
-// import data from '../db.json'
 
 
 function App() {
-  const [tasks, setTasks] = useState(
-    [
-    ]
-)
+  const [tasks, setTasks] = useState([])
 
-    const deleteTask = (id) => {
-      setTasks(tasks.filter((task) =>
-        task.id !== id
-        ))
-    }
+  useEffect(() => {
+   const getTasks = async () => {
+    const  tasksFromServer = await fetchTasks()
+    setTasks(tasksFromServer)
+   }
 
-    const addTask = (task) => {
-      const id = uuidv4;
-      const newTask = {id, ...task}
-      setTasks([...tasks, newTask])
-    }
+    getTasks()
+  }, [])
 
-    function toggleForm() {
+
+  // fetch Tasks
+  const fetchTasks = async () => {
+    const res = await fetch('http://127.0.0.1:5000/tasks')
+    const data = await res.json()
+
+    return data
+  }
+
+
+  const deleteTask = async (id) => {
+    await fetch(`http://127.0.0.1:5000/tasks/${id}`, {
+      method: 'DELETE'
+    })
+    
+    setTasks(tasks.filter((task) =>
+      task.id !== id
+    ))
+  }
+
+  const addTask = async (task) => {
+    
+  const res = await fetch('http://127.0.0.1:5000/tasks/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(task)
+  })
+  const data = await res.json()
+
+    setTasks([...tasks, data])
+  }
+
+  function toggleForm() {
     setShowForm(!showForm)
-    }
+  }
 
-    const [showForm, setShowForm] = useState(false)
+  const [showForm, setShowForm] = useState(false)
 
   return (
     <div className='container'>
-      <Header onClick={toggleForm} /> 
-      {showForm && 
-      <AddTask onAdd={addTask} /> }
+      <Header onClick={toggleForm} />
+      {showForm &&
+        <AddTask onAdd={addTask} />}
       {tasks.length > 0 ?
-        <Tasks tasks={tasks} onDelete={deleteTask} /> : 
-        <p>No tasks!!!</p> }
+        <Tasks tasks={tasks} onDelete={deleteTask} /> :
+        <p>No tasks!!!</p>}
     </div>
   )
 }
