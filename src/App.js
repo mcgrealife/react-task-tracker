@@ -4,7 +4,7 @@ import Tasks from './components/Tasks'
 import AddTask from './components/AddTask'
 import {v4 as uuidv4} from 'uuid'
 import React from 'react'
-import data from '../db.json'
+// import data from '../db.json'
 
 
 function App() {
